@@ -48,6 +48,7 @@ const createSearch = () => {
     label.setAttribute('for', 'searchInput');
     search.setAttribute('type', 'search');
     search.setAttribute('id', 'searchInput');
+    search.setAttribute('placeholder', 'Location');
     btn.setAttribute('type', 'submit');
 
     div.className = 'search-div';
@@ -64,9 +65,30 @@ const createSearch = () => {
     document.querySelector('.container').appendChild(form);
 };
 
+const createModalLoading = () => {
+    const divContainer = document.createElement('div');
+    const divLoader = document.createElement('div');
+
+    divContainer.className = 'loading-container';
+    divLoader.className = 'loader';
+
+    divContainer.appendChild(divLoader);
+    document.querySelector('.container').appendChild(divContainer);
+};
+
+const createMain = () => {
+    const main = document.createElement('main');
+
+    main.className = 'main';
+
+    document.querySelector('.container').appendChild(main);
+};
+
 const createApp = () => {
     createContainer();
+    createModalLoading();
     createSearch();
+    createMain();
 };
 
 export default function setup() {

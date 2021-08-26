@@ -5,8 +5,15 @@ const selector = (() => {
     };
 })();
 
+const resetMain = () => {
+    selector.main.innerHTML = '';
+};
+
+const showError = () => {
+    
+};
+
 const errorHandler = (error) => {
-    selector.main.innerHTML = error;
 };
 
 export default errorHandler;

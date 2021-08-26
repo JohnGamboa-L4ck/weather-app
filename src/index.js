@@ -12,7 +12,7 @@ const test = () => {
         });
 };
 
-test();
+// test();
 
 setup();
 // run a function from event.js

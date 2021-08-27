@@ -1,3 +1,5 @@
+import Favicon from './favicon.png';
+
 const setLanguage = () => document.querySelector('html').setAttribute('lang', 'en');
 
 const setupHeadTag = () => {
@@ -6,24 +8,26 @@ const setupHeadTag = () => {
 
     const newMetaEdge = document.createElement('meta');
     const newLinkMaterialIcon = document.createElement('link');
+    const newLinkFavicon = document.createElement('link');
 
     newMetaEdge.setAttribute('http-equiv', 'X-UA-Compatible');
     newMetaEdge.setAttribute('content', 'IE=edge');
     newLinkMaterialIcon.setAttribute('rel', 'stylesheet');
     newLinkMaterialIcon
         .setAttribute('href', 'https://fonts.googleapis.com/icon?family=Material+Icons+Outlined');
+    newLinkFavicon.setAttribute('rel', 'icon');
+    newLinkFavicon.setAttribute('type', 'image/png');
+    newLinkFavicon.setAttribute('href', Favicon);
 
     headElement.insertBefore(newMetaEdge, titleElement);
     headElement.insertBefore(newLinkMaterialIcon, titleElement);
+    headElement.appendChild(newLinkFavicon);
 };
 
-// input search
-// practice async functions
-
-function isDay() {
+const isDay = () => {
     const hours = (new Date()).getHours();
     return (hours >= 6 && hours < 18);
-}
+};
 
 const setBackground = () => {
     if (!isDay()) {
@@ -76,6 +80,7 @@ const createMain = () => {
 const createModalContainer = () => {
     const divContainer = document.createElement('div');
     divContainer.className = 'modal';
+    divContainer.setAttribute('id', 'modal');
     document.querySelector('.container').appendChild(divContainer);
 };
 
@@ -99,10 +104,10 @@ const createModalError = () => {
     closeBtn.className = 'close-error';
 
     small.setAttribute('id', 'errorMessage');
+    closeBtn.setAttribute('id', 'closeError');
 
     bigIcon.innerText = 'error_outline';
     label.innerText = 'Error';
-    // small.innerText = '404 Not Found';
     closeBtn.innerHTML = 'CLOSE';
 
     errorBody.appendChild(label);
@@ -119,16 +124,32 @@ const createModals = () => {
     createModalError();
 };
 
+const createForecastTemplate = () => {
+    const header = document.createElement('h1');
+    const paraDescription = document.createElement('p');
+
+    // temporary innerText data
+
+    header.innerText = 'Cabanatuan City, PH';
+    paraDescription.innerText = 'mostly cloudy';
+
+    document.querySelector('main').appendChild(header);
+    document.querySelector('main').appendChild(paraDescription);
+};
+
 const createApp = () => {
     createContainer();
     createSearch();
     createMain();
     createModals();
+    createForecastTemplate();
 };
 
-export default function setup() {
+const setup = () => {
     setLanguage();
     setupHeadTag();
     setBackground();
     createApp();
-}
+};
+
+export default setup;

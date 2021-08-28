@@ -24,10 +24,16 @@
 }
 
 body {
-    font-family:Verdana, Geneva, 'DejaVu Sans', sans-serif;
+    font-family:Verdana, Geneva, "DejaVu Sans", sans-serif;
     min-height: 100vh;
     background-color: var(--background);
     color: var(--color);
+}
+
+h1 {
+    font-size: clamp(2rem, 10vw, 3rem);
+    font-weight: normal;
+    text-transform:uppercase;
 }
 
 button {
@@ -36,6 +42,7 @@ button {
 
 button, 
 input {
+    font-family:Verdana, Geneva, "DejaVu Sans", sans-serif;
     outline: none;
     border: none;
     border-radius: 2px;
@@ -86,7 +93,6 @@ input:focus-visible  {
     height: 24px;
     margin: 0 5px 0 8px;
     padding: 5px .5rem 5px .5rem;
-    font-family:Verdana, Geneva, 'DejaVu Sans', sans-serif;
     font-size: 16px;
     color: var(--color);
     background-color: var(--background);
@@ -199,17 +205,81 @@ input:focus-visible  {
 }
 
 .main {
-    flex: 1;
+    margin: auto auto auto 20vw;
     max-width: 100%;
     padding: 1rem 1rem 1rem 1rem;
     overflow-wrap: break-word;
     overflow-y: auto;
 }
 
+.description {
+    font-size: clamp(1.3rem, 10vw, 1.7rem);
+    opacity: .8;
+}
+
+.temperature {
+    position: relative;
+    font-size: clamp(6rem, 10vw, 8rem);
+    margin-right: 2.5rem;
+    color: var(--color);
+    background-color: transparent;
+}
+
+.temperature,
+.more-info {
+    display: inline-block;
+}
+
+.temperature.deg-c::after,
+.temperature.deg-c + .more-info .info-feels::after {
+    content: "\2103";
+}
+
+.temperature.deg-f::after,
+.temperature.deg-f + .more-info .info-feels::after {
+    content: "\2109";
+}
+
+.temperature.deg-c::after,
+.temperature.deg-f::after {
+    position: absolute;
+    top: 1rem;
+    font-size: 1.5rem;
+}
+
+.temperature.deg-c + .more-info .info-wind::after {
+    content: " MPS";
+}
+
+.temperature + .more-info .info-humid::after {
+    content: "\0025";
+}
+
+.temperature.deg-f + .more-info .info-wind::after {
+    content: " MPH";
+}
+
+.more-info {
+    border-left: 2px solid var(--tranparent1);
+    border-radius: 3px;
+    padding: 0 0 0 1rem;
+    opacity: .8;
+}
+
+.more-info > * {
+    line-height: 2rem;
+}
+
 @media only screen and (max-width: 780px) {
     .search-div {
         margin: 0 1rem 0 1rem;
         max-width: 780px;
+    }
+    .main {
+        margin: auto auto auto 0;
+    }
+    .description {
+        margin: 0 0 .5rem 0;
     }
 }
 
@@ -220,5 +290,8 @@ input:focus-visible  {
     .search-div {
         margin: 0 .2rem 0 .2rem;
         max-width: 414px;
+    }
+    .main {
+        padding: .5rem .5rem .5rem .5rem;
     }
 }

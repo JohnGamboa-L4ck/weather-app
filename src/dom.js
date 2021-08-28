@@ -1,4 +1,4 @@
-import Favicon from './favicon.png';
+import Favicon from './grey-cloud-1.svg';
 
 const setLanguage = () => document.querySelector('html').setAttribute('lang', 'en');
 
@@ -127,14 +127,41 @@ const createModals = () => {
 const createForecastTemplate = () => {
     const header = document.createElement('h1');
     const paraDescription = document.createElement('p');
+    const btnTemp = document.createElement('button');
+    const div = document.createElement('div');
+    const paraFeelsLike = document.createElement('p');
+    const paraWind = document.createElement('p');
+    const paraHumid = document.createElement('p');
 
-    // temporary innerText data
+    btnTemp.className = 'temperature deg-c';
+    paraDescription.className = 'description';
+    div.className = 'more-info';
+    paraFeelsLike.className = 'info-feels';
+    paraWind.className = 'info-wind';
+    paraHumid.className = 'info-humid';
 
-    header.innerText = 'Cabanatuan City, PH';
-    paraDescription.innerText = 'mostly cloudy';
+    header.setAttribute('id', 'header');
+    paraDescription.setAttribute('id', 'description');
+    btnTemp.setAttribute('id', 'temperature');
+    paraFeelsLike.setAttribute('id', 'infoFeels');
+    paraWind.setAttribute('id', 'infoWind');
+    paraHumid.setAttribute('id', 'infoHumid');
+
+    header.innerText = 'city name, country';
+    paraDescription.innerText = 'description';
+    btnTemp.innerHTML = 69;
+    paraFeelsLike.innerHTML = 'Feels like: <span>69<span>';
+    paraWind.innerHTML = 'Wind Speed: <span>69<span>';
+    paraHumid.innerHTML = 'Humidity: <span>69<span>';
+
+    div.appendChild(paraFeelsLike);
+    div.appendChild(paraWind);
+    div.appendChild(paraHumid);
 
     document.querySelector('main').appendChild(header);
     document.querySelector('main').appendChild(paraDescription);
+    document.querySelector('main').appendChild(btnTemp);
+    document.querySelector('main').appendChild(div);
 };
 
 const createApp = () => {

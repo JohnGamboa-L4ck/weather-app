@@ -1,18 +1,15 @@
 import './style.css';
 import setup from './dom';
-import events from './events';
+import { processInput, events } from './events';
 
-setup();
-events();
+const onload = async () => {
+    try {
+        setup();
+        await processInput('Talavera, ph');
+        events();
+    } catch (error) {
+        document.body.innerHTML = '<h1>Oops! Something went wrong.</h1>';
+    }
+};
 
-// run a function from event.js
-
-// const preventKeydown = (e) => {
-//     e.preventDefault();
-// };
-
-// window.addEventListener('keydown', preventKeydown);
-
-// setTimeout(() => {
-//     window.removeEventListener('keydown', preventKeydown);
-// }, 3000);
+onload();

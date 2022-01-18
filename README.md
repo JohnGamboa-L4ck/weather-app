@@ -2,7 +2,7 @@
 
 A weather forecast site using the [OpenWeatherMap API](https://openweathermap.org/api).
 
-**Live Demo:** 
+**Live Demo:** [https://mrjgamboa.github.io/weather-app/](https://mrjgamboa.github.io/weather-app/)
 
 ## Description
 
